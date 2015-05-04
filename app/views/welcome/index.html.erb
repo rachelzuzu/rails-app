@@ -1,0 +1,8 @@
+<h1>Home Page</h1>
+
+<!-- link_to method is one of rails built in 
+creates hyperlink based on text to display and where to go -->
+<%= link_to "Articles", controller: "articles" %>
+<%= link_to "Users", controller: "users" %>
+ <%= link_to 'Edit account', edit_user_registration_path %>
+<%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %>
