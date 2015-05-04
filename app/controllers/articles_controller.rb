@@ -6,7 +6,15 @@ class ArticlesController < ApplicationController
 	
 # listing all articles
 	def index
-		@articles=Article.all
+		#@articles=Article.all
+		@articles = current_user.articles
+		# gets articles from db
+		# .json renders articles as json
+		# javascript object notation
+		respond_to do |format|
+			format.html
+			format.json { render json: @articles}
+		end
 	end
 
 	def show
@@ -25,12 +33,16 @@ class ArticlesController < ApplicationController
 		@article=Article.find(params[:id])
 	end
 
+# did this with mike
 	def create
 # Article refers to model
-		# @article=Article.new(article_params)
-	@article.user = current_user
+		@article = Article.new(article_params)
+	#@article.user = current_user
 # saving the model in the database
 		if @article.save
+			# create a new article, if the article saves 
+			# we add it to current_user articles
+			current_user.articles << @article
 			redirect_to @article
 		else
 			render 'new'
