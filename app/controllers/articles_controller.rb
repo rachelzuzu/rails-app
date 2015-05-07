@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 # define methods that will become the actions for this controller
-  # before_action :set_article, only: [:show, :edit, :update, :destroy]
+  # before_action :set_article, only: [:show, :edit, :update, :destroy
   # before_action :authenticate_user!, except: :index
 
 	
@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
 	def index
 		#@articles=Article.all
 		@articles = current_user.articles
-		# gets articles from db
+		# gets articles for user from db
 		# .json renders articles as json
 		# javascript object notation
 		respond_to do |format|
@@ -79,7 +79,7 @@ class ArticlesController < ApplicationController
 # made private to make sure it can't be called outside its intended context
 	private
 		def article_params
-			params.require(:article).permit(:title, :text)
+			params.require(:article).permit(:title, :text, :avatar)
 		end
 
 

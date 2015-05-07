@@ -6,7 +6,11 @@
 <p>
 	<strong>Text:</strong>
 	<%= @article.text %>
-	
+</p>
+
+<p>
+	<strong>Image:</strong>
+	<%= image_tag @article.avatar.url(:thumb) %>
 </p>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |

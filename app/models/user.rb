@@ -3,10 +3,22 @@ require 'bcrypt'
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-    devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 	has_many :articles
-	# has_secure_password
+  # paperclip
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
+
+  def in_role?(role)
+  		role == @role
+	end
+
+	def assign_role(role)
+    @role = role
+  		
+	end
 
 # Creates virtual password+password_confirmation attributes on your model, which are not stored in the database (that would be very insecure)
 # Validates that password & password_confirmation attributes match
