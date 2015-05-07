@@ -1,1 +1,1 @@
-This is my practice rails app where I apply what we learn in class
+This is a rails app where I practice what I learn in class
