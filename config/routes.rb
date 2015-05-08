@@ -24,9 +24,17 @@ Rails.application.routes.draw do
   resources :users do
     resources :articles
   end
-  resources :articles
+
   resources :users, only: 
-   [:new, :create]
+    [:new, :create]
+
+# comments is a nested resource within articles
+# will build nested route /articles/1/comments
+  resources :articles do
+    resources :comments
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

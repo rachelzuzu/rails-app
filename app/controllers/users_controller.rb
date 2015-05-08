@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user!, except: :index
 
+  # attr_accessor :email
+  # helper_method :show
 
   # GET /users
   # GET /users.json
